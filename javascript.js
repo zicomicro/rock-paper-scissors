@@ -16,7 +16,8 @@ function getHumanChoice() {
   return input;
 }
  
-
+function playGame(){
+ 
  let humanScore = 0;
   let computerScore = 0;
 
@@ -65,9 +66,26 @@ function playRound(humanChoice , computerChoice){
           break;
       }
     }
+ }
+
+   for (let i = 0; i < 5; i++) {
+    console.log(`--- Round ${i + 1} ---`);
+    const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice();
+    playRound(humanSelection, computerSelection);
+    console.log(`Score — You: ${humanScore} | Computer: ${computerScore}`);
+  }
+
+  console.log("\n=== GAME OVER ===");
+  if (humanScore > computerScore) {
+    console.log("You Win!");
+  } else if (computerScore > humanScore) {
+    console.log("Computer Wins!");
+  } else {
+    console.log("It's a Draw!");
+  }
+
 }
+ 
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-
-playRound(humanSelection , computerSelection);
+playGame();
